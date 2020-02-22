@@ -153,7 +153,7 @@
   #elif N_AXIS == 5 // 5 axis : homing
     #define HOMING_CYCLE_0 (1<<AXIS_1)   //HomeX
     #define HOMING_CYCLE_1 ((1<<AXIS_2)|(1<<AXIS_1))  // HomeY
-    #define HOMING_CYCLE_3 ((1<<AXIS_3)|(1<<AXIS_5)) // OPTIONAL: Home Z axis
+    // #define HOMING_CYCLE_3 (1<<AXIS_3) // Home Z axis
   #elif N_AXIS == 6 // 6 axis : homing
     #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
     #define HOMING_CYCLE_1 (1<<AXIS_4) // Home 4th axis (A)
@@ -229,7 +229,7 @@
 // immediately forces a feed hold and then safely de-energizes the machine. Resuming is blocked until
 // the safety door is re-engaged. When it is, Grbl will re-energize the machine and then resume on the
 // previous tool path, as if nothing happened.
-#define ENABLE_SAFETY_DOOR_INPUT_PIN // Default disabled. Uncomment to enable.
+//#define ENABLE_SAFETY_DOOR_INPUT_PIN // Default disabled. Uncomment to enable.
 
 // After the safety door switch has been toggled and restored, this setting sets the power-up delay
 // between restoring the spindle and coolant and resuming the cycle.
@@ -266,9 +266,9 @@
   //#define INVERT_MAX_LIMIT_PIN_MASK ((1<<AXIS_1) | (1<<AXIS_2) | (1<<AXIS_3))
   // Uncomment the following (INVERT_MIN_LIMIT_PIN_MASK) for NC endstops.
   // For my lowrider, I have normally closed (NC) min limit switch on x (AXIS_1),
-  // y (AXIS_2), z (AXIS_3) and cloned z (AXIS_5).
+  // y (AXIS_2), z (AXIS_3) .
   // Do *NOT* use $5=1 as it won't work (keep $5=0)
-  #define INVERT_MIN_LIMIT_PIN_MASK ((1<<AXIS_1) | (1<<AXIS_2) | (1<<AXIS_3) | (1<<AXIS_5))
+  #define INVERT_MIN_LIMIT_PIN_MASK ((1<<AXIS_1) | (1<<AXIS_2) | (1<<AXIS_3))
 #endif
 
 // Inverts the spindle enable pin from low-disabled/high-enabled to low-enabled/high-disabled. Useful
