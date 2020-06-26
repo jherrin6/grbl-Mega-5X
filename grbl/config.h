@@ -51,7 +51,7 @@
 // Axis array index values. Must start with 0 and be continuous.
 #ifdef DEFAULTS_RAMPS_BOARD
   // 4, 5 & 6 axis support only for RAMPS 1.4 (for the moment :-)...)
-  #define N_AXIS 5            // Number of axes
+  #define N_AXIS 4            // Number of axes
   #define N_AXIS_LINEAR 3     // Number of linears axis
 #else
   #define N_AXIS 3 // Number of axes = 3 if not DEFAULTS_RAMPS_BOARD
@@ -69,7 +69,7 @@
 #endif
 #if N_AXIS > 3
   #define AXIS_4 3
-  #define AXIS_4_NAME 'X' // Letter of axis number 4
+  #define AXIS_4_NAME 'Y' // Letter of axis number 4
 #endif
 #if N_AXIS > 4
   #define AXIS_5 4
@@ -146,10 +146,9 @@
 // NOTE: Defaults are set for a traditional 3-axis CNC machine. Z-axis first to clear, followed by X & Y.
 #ifdef DEFAULTS_RAMPS_BOARD
   #if N_AXIS == 4 // 4 axis : homing
-    #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
-    #define HOMING_CYCLE_1 (1<<AXIS_4) // Home 4th axis (A)
-    #define HOMING_CYCLE_2 (1<<AXIS_1) // Home X axis
-    #define HOMING_CYCLE_3 (1<<AXIS_2) // Home Y axis
+    #define HOMING_CYCLE_0 (1<<AXIS_1) // Home X axis
+    #define HOMING_CYCLE_1 ((1<<AXIS_2)|(1<<AXIS_4)) // Home Y axis
+    #define HOMING_CYCLE_2 (1<<AXIS_3) // Home Z axis
   #elif N_AXIS == 5 // 5 axis : homing
     #define HOMING_CYCLE_0 (1<<AXIS_1)   //HomeX
     #define HOMING_CYCLE_1 ((1<<AXIS_2)|(1<<AXIS_1))  // HomeY
